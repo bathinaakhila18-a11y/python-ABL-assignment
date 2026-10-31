@@ -35,7 +35,7 @@ Above 300 units	₹7
 8. Otherwise, display "Normal Increase".
 9. Display all monthly bills and comparison results.
 10. Stop.
-#  mermaid flow chat 
+#  Mermaid flowchat 
 ```mermaid 
 flowchart TD
     A([START]) --> B[/Enter Number of Months/]
