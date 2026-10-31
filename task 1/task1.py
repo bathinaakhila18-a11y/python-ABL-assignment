@@ -1,44 +1,53 @@
-# Problem Statement
-To develop a program for hospital billing and patient classification. The program accepts the patient's name, age, patient type, and number of days admitted. It calculates the total hospital bill based on the patient type and classifies the patient as a child, adult, or senior citizen based on age.
-#  Algorithm
-1. Start.
-2. Read the patient's name, age, patient type, and number of days admitted.
-3. Calculate the hospital bill based on the patient type.
-   - General patient: ₹1,000 per day.
-   - Emergency patient: ₹2,000 per day.
-   - ICU patient: ₹5,000 per day.
-Calculate the total bill using:
-Total Bill = Daily Charge × Number of Days
-5. Classify the patient based on age:
-- If age is less than 18, classify as Child.
-- If age is between 18 and 59, classify as Adult.
-- If age is 60 or above, classify as Senior Citizen.
-6. Display the patient's details, classification, and total hospital bill.
-# flowchart
-  ```mermaid
-flowchart TD
-    A([Start]) --> B[/Input name, age, patient type, days/]
-    B --> C{Patient type?}
+students = []
+n = int(input("Enter number of students: "))
 
-    C -->|General| D[Daily charge = 1000]
-    C -->|Emergency| E[Daily charge = 2000]
-    C -->|ICU| F[Daily charge = 5000]
+for i in range(n):
+    print("\nEnter details of student", i + 1)
 
-    D --> G[Calculate total bill]
-    E --> G
-    F --> G
+    sid = int(input("Student ID: "))
+    name = input("Student Name: ")
+    aggregate = float(input("Aggregate Marks: "))
 
-    G --> H{Age less than 18?}
-    H -->|Yes| I[Classification = Child]
-    H -->|No| J{Age less than 60?}
+    subjects = []
+    for j in range(3):
+        marks = float(input("Enter subject marks: "))
+        subjects.append(marks)
 
-    J -->|Yes| K[Classification = Adult]
-    J -->|No| L[Classification = Senior Citizen]
+    attendance = float(input("Attendance Percentage: "))
+    income = float(input("Annual Family Income: "))
 
-    I --> M[/Display classification and bill/]
-    K --> M
-    L --> M
+    if (aggregate >= 75 and
+        all(mark >= 60 for mark in subjects) and
+        attendance >= 75 and income <= 250000):
 
-    M --> N([Stop])
-  ```
+        students.append({
+            "id": sid,
+            "name": name,
+            "aggregate": aggregate,
+            "subjects": subjects,
+            "attendance": attendance
+        })
 
+    else:
+        print(name, "- Not Eligible")
+
+# Ranking eligible students
+students.sort(key=lambda s: (
+    -s["aggregate"],
+    -s["attendance"],
+    -sum(s["subjects"]),
+    s["id"]
+))
+
+print("\n--- Scholarship Eligible Students ---")
+
+for rank, s in enumerate(students, start=1):
+    print("\nRank:", rank)
+    print("ID:", s["id"])
+    print("Name:", s["name"])
+    print("Aggregate:", s["aggregate"])
+    print("Attendance:", s["attendance"])
+    print("Subject Total:", sum(s["subjects"]))
+
+if len(students) == 0:
+    print("No eligible students found.")
