@@ -37,7 +37,7 @@ Above 300 units	₹7
 10. Stop.
 
 # Mermaid flowchat 
-```mermaid 
+```mermaid
 flowchart TD
     A([START]) --> B[/Enter Number of Months/]
     B --> C[/Enter Electricity Units/]
@@ -82,7 +82,7 @@ flowchart TD
     W --> X
     X --> Y([STOP])
 ```
-# psuedo code 
+# psuedo code
 START
 
 INPUT number_of_months
