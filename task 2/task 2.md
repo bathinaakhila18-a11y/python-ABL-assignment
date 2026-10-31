@@ -1,6 +1,6 @@
 # Problem Statement
 Design a Progressive Electricity Billing System that calculates household electricity bills based on the number of units consumed using multiple consumption slabs. The system should include fixed charges, additional surcharges and applicable rebates. It should calculate the total bill amount for each month, compare electricity bills across several months and identify unusual increases in consumption or billing amounts.
-# Assumptions
+Assumptions
 1. Electricity consumption is measured in units (kWh).
 2. The billing period is one month.
 3. The following slab rates are assumed:
@@ -9,7 +9,6 @@ First 100 units	₹2
 101–200 units	₹3
 201–300 units	₹5
 Above 300 units	₹7
-
 4. Fixed charge is ₹50 per month.
 5. Surcharge is 5% of the energy charge.
 6. A rebate of ₹20 is given if consumption is below 100 units.
@@ -82,133 +81,6 @@ flowchart TD
     W --> X
     X --> Y([STOP])
 ```
-# psuedo code
-START
-
-INPUT number_of_months
-
-FOR each month
-
-    INPUT units
-
-    IF units <= 100 THEN
-        energy_charge = units * 2
-
-    ELSE IF units <= 200 THEN
-        energy_charge = 100 * 2 +
-                        (units - 100) * 3
-
-    ELSE IF units <= 300 THEN
-        energy_charge = 100 * 2 +
-                        100 * 3 +
-                        (units - 200) * 5
-
-    ELSE
-        energy_charge = 100 * 2 +
-                        100 * 3 +
-                        100 * 5 +
-                        (units - 300) * 7
-    END IF
-
-    fixed_charge = 50
-    surcharge = energy_charge * 0.05
-
-    IF units < 100 THEN
-        rebate = 20
-    ELSE
-        rebate = 0
-    END IF
-
-    total_bill = energy_charge +
-                 fixed_charge +
-                 surcharge - rebate
-
-    STORE units AND total_bill
-
-END FOR
-
-FOR each month from 2 to number_of_months
-
-    increase = current_bill - previous_bill
-
-    percentage = (increase / previous_bill) * 100
-
-    IF percentage > 30 THEN
-        DISPLAY "Unusual Increase"
-    ELSE
-        DISPLAY "Normal Increase"
-    END IF
-
-END FOR
-
-DISPLAY all monthly bills
-
-STOP
-# source code 
-bills = []
-n = int(input("Enter number of months: "))
-
-for i in range(n):
-
-    print("\nMonth", i + 1)
-    units = float(input("Enter electricity units: "))
-
-    # Calculate energy charges
-    if units <= 100:
-        energy = units * 2
-
-    elif units <= 200:
-        energy = 100 * 2 + (units - 100) * 3
-
-    elif units <= 300:
-        energy = 100 * 2 + 100 * 3 + (units - 200) * 5
-
-    else:
-        energy = 100 * 2 + 100 * 3 + 100 * 5 + (units - 300) * 7
-
-    fixed = 50
-    surcharge = energy * 0.05
-
-    if units < 100:
-        rebate = 20
-    else:
-        rebate = 0
-
-    total = energy + fixed + surcharge - rebate
-
-    bills.append(total)
-
-    print("Energy Charge:", energy)
-    print("Fixed Charge:", fixed)
-    print("Surcharge:", surcharge)
-    print("Rebate:", rebate)
-    print("Total Bill: Rs.", round(total, 2))
-
-
-# Compare monthly bills
-print("\n--- Monthly Bill Comparison ---")
-
-for i in range(1, n):
-
-    previous = bills[i - 1]
-    current = bills[i]
-
-    increase = current - previous
-
-    if previous > 0:
-        percentage = (increase / previous) * 100
-    else:
-        percentage = 0
-
-    print("\nMonth", i + 1)
-    print("Previous Bill:", round(previous, 2))
-    print("Current Bill:", round(current, 2))
-    print("Change:", round(percentage, 2), "%")
-
-    if percentage > 30:
-        print("Unusual Increase Detected!")
-    else:
-        print("Normal Increase")
   # sample input
  Enter number of months: 3
 
@@ -220,73 +92,3 @@ Enter electricity units: 150
 
 Month 3
 Enter electricity units: 280
-# sample  output
-Month 1
-Energy Charge: 160
-Fixed Charge: 50
-Surcharge: 8
-Rebate: 20
-Total Bill: Rs. 198.00
-
-Month 2
-Energy Charge: 350
-Fixed Charge: 50
-Surcharge: 17.5
-Rebate: 0
-Total Bill: Rs. 417.50
-
-Month 3
-Energy Charge: 700
-Fixed Charge: 50
-Surcharge: 35
-Rebate: 0
-Total Bill: Rs. 785.00
-
---- Monthly Bill Comparison ---
-
-Month 2
-Previous Bill: 198.00
-Current Bill: 417.50
-Change: 110.86 %
-Unusual Increase Detected!
-
-Month 3
-Previous Bill: 417.50
-Current Bill: 785.00
-Change: 88.02 %
-Unusual Increase Detected!
-# conclusion
-Month 1
-Energy Charge: 160
-Fixed Charge: 50
-Surcharge: 8
-Rebate: 20
-Total Bill: Rs. 198.00
-
-Month 2
-Energy Charge: 350
-Fixed Charge: 50
-Surcharge: 17.5
-Rebate: 0
-Total Bill: Rs. 417.50
-
-Month 3
-Energy Charge: 700
-Fixed Charge: 50
-Surcharge: 35
-Rebate: 0
-Total Bill: Rs. 785.00
-
---- Monthly Bill Comparison ---
-
-Month 2
-Previous Bill: 198.00
-Current Bill: 417.50
-Change: 110.86 %
-Unusual Increase Detected!
-
-Month 3
-Previous Bill: 417.50
-Current Bill: 785.00
-Change: 88.02 %
-Unusual Increase Detected!
