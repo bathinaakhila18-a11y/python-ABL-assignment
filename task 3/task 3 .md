@@ -27,7 +27,7 @@ Develop a Python program to calculate hospital bills by processing consultation 
 14. Stop
 #  mermaid flow chart 
 ```mermaid 
- .flowchart TD
+ flowchart TD
     A([Start]) --> B[/Enter patient name, age/]
     B --> C[/Enter consultation, diagnostic and treatment charges/]
     C --> D[/Enter annual income/]
