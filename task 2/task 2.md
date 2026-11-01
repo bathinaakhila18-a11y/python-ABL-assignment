@@ -3,7 +3,7 @@ Design a Progressive Electricity Billing System that calculates household electr
 # Assumptions
 1. Electricity consumption is measured in units (kWh).
 2. The billing period is one month.
-3. The following slab rates are assumed:
+3. The following slab rates are assumed
 Consumption	Rate per unit
 First 100 units	₹2
 101–200 units	₹3
