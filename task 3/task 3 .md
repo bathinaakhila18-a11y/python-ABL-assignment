@@ -25,7 +25,7 @@ Develop a Python program to calculate hospital bills by processing consultation 
 12. Classify patient according to payment policy.
 13. Display bill details and patient classification.
 14. Stop
-# flow chart 
+#  mermaid flow chart 
 ```mermaid 
  .flowchart TD
     A([Start]) --> B[/Enter patient name, age/]
