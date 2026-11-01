@@ -1,6 +1,6 @@
 # Problem Statement
 Design a Progressive Electricity Billing System that calculates household electricity bills based on the number of units consumed using multiple consumption slabs. The system should include fixed charges, additional surcharges and applicable rebates. It should calculate the total bill amount for each month, compare electricity bills across several months and identify unusual increases in consumption or billing amounts.
-Assumptions
+# Assumptions
 1. Electricity consumption is measured in units (kWh).
 2. The billing period is one month.
 3. The following slab rates are assumed:
